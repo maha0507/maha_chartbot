@@ -14,6 +14,10 @@ export const Options = styled.div`
     margin: 3px;
   }
   .disabled {
-    color: grey;
+    color: #4f5d75;
+  }
+  .highlighted {
+    background: #4285f4 !important;
+    color: white;
   }
 `;

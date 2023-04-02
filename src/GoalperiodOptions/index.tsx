@@ -17,12 +17,7 @@ const GoalperiodOptions = (props: {
       id: 2,
     },
   ];
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-
-  const handleButtonClick = () => {
-    // code to handle the button click
-    setButtonDisabled(true);
-  };
+  const [buttonid, setbuttonid] = useState(0);
   const handler2 = (option: any) => {
     let button1 = JSON.parse(localStorage.getItem("CorrectData") || "{}");
     console.log(button1);
@@ -32,18 +27,19 @@ const GoalperiodOptions = (props: {
 
   const optionsMarkup = options.map((option) => (
     <Options>
-      <button
-        key={option.id}
-        onClick={() => {
-          option.handler();
-          handler2(option.text);
-          handleButtonClick();
-        }}
-        disabled={buttonDisabled}
-        className={buttonDisabled ? "disabled" : ""}
-      >
-        {option.text}
-      </button>
+      <>
+        <button
+          key={option.id}
+          onClick={() => {
+            option.handler();
+            handler2(option.text);
+            setbuttonid(option.id);
+          }}
+          className={buttonid === option.id ? "highlighted" : ""}
+        >
+          {option.text}
+        </button>
+      </>
     </Options>
   ));
 

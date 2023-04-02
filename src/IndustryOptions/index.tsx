@@ -103,12 +103,7 @@ const IndustryOptions = (props: {
     button1.push(option);
     localStorage.setItem("CorrectData", JSON.stringify(button1));
   };
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-
-  const handleButtonClick = () => {
-    // code to handle the button click
-    setButtonDisabled(true);
-  };
+  const [buttonid, setButtonid] = useState(0);
   const optionsMarkup = options.map((option) => (
     <Options>
       <button
@@ -116,10 +111,9 @@ const IndustryOptions = (props: {
         onClick={() => {
           option.handler();
           handler2(option.text);
-          handleButtonClick();
+          setButtonid(option.id);
         }}
-        disabled={buttonDisabled}
-        className={buttonDisabled ? "disabled" : ""}
+        className={option.id === buttonid ? "highlighted" : ""}
       >
         {option.text}
       </button>
